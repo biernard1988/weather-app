@@ -10,10 +10,9 @@ export default function Wallpaper() {
       try {
         const response = await axios.get("https://picsum.photos/v2/list");
         const randomIndex = Math.floor(Math.random() * response.data.length); // Get a random index
-        setImageUrl(response.data[randomIndex].download_url); // Assuming download_url holds the image URL
+        setImageUrl(response.data[randomIndex].download_url);
       } catch (error) {
-        console.error("Error fetching wallpaper:", error);
-        // Handle the error gracefully, like displaying a placeholder image
+        console.log("Error fetching wallpaper:", error);
       }
     };
 
