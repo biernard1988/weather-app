@@ -23,18 +23,18 @@ export default function Weather({ data }) {
         <p className="text-2xl text-center pb-6">
           Weather in <b>{data.name}</b>
         </p>
-        <div className="flex justify-between text-center ">
+        <div className="flex flex-col md:flex-row md:justify-between items-center">
           <div className="flex gap-2">
             <p>Humidity:</p>
-            <p>{data.main.humidity} %</p>
+            <b>{data.main.humidity} %</b>
           </div>
           <div className="flex gap-2">
             <p>Winds:</p>
-            <p>{data.wind.speed.toFixed(0)} Km/h</p>
+            <b>{data.wind.speed.toFixed(0)} Km/h</b>
           </div>
           <div className="flex gap-2">
             <p>Pressure:</p>
-            <p>{data.main.pressure} hPa</p>
+            <b>{data.main.pressure} hPa</b>
           </div>
         </div>
       </div>

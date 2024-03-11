@@ -38,7 +38,7 @@ export default function Home() {
           {/* BACKGROUND OVERLAY */}
         </div>
         <Wallpaper />
-        <div className="relative flex justify-center items-center max-w-md container mx-auto z-10 mt-5">
+        <div className="relative flex justify-center items-center max-w-sm md:max-w-lg container mx-auto z-10 mt-5">
           <form
             onSubmit={fetchWeather}
             className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-400 text-white rounded-2xl"
