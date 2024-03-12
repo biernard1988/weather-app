@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Weather({ data }) {
   return (
-    <div className="relative flex flex-col justify-between max-w-xl w-full h-fit m-auto p-4 text-white z-10 gap-20">
+    <div className="relative flex flex-col justify-between max-w-xl h-fit m-auto p-4 text-white z-10 gap-20">
       <div className="relative flex justify-between pt-12">
         <div className="flex flex-col items-center">
           <Image

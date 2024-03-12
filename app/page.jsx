@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import Wallpaper from "./components/Wallpaper";
 import Weather from "./components/Weather";
@@ -11,10 +11,16 @@ export default function Home() {
   const [weather, setWeather] = useState({});
   const [clearButton, setClearButton] = useState(false);
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
+  useEffect(() => {
+    setClearButton(city.length > 0);
+  }, [city]);
 
   const fetchWeather = async (e) => {
     e.preventDefault();
+    if (!city) return; // Prevent fetching weather if city is empty
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
+
     try {
       const response = await axios.get(url);
       setWeather(response.data);
@@ -23,24 +29,18 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    setClearButton(city.length > 0);
-  }, [city]);
-
-  const memoizedFetchWeather = useCallback(fetchWeather, [weather]);
-
   if (!weather) {
     return <Loading />;
   } else {
     return (
       <>
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/50 z-[1]">
+        <div className="absolute inset-0 bg-black/50 z-[1]">
           {/* BACKGROUND OVERLAY */}
         </div>
         <Wallpaper />
         <div className="relative flex justify-center items-center max-w-sm md:max-w-lg container mx-auto z-10 mt-5">
           <form
-            onSubmit={fetchWeather}
+            onSubmit={fetchWeather} // Use fetchWeather directly as onSubmit handler
             className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-400 text-white rounded-2xl"
           >
             <div>
@@ -58,9 +58,7 @@ export default function Home() {
             </button>
           </form>
         </div>
-        {weather.main && (
-          <Weather data={weather} onLocationChange={memoizedFetchWeather} />
-        )}
+        {weather.main && <Weather data={weather} />}
       </>
     );
   }

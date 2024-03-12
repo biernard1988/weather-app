@@ -21,7 +21,7 @@ export default function Wallpaper() {
 
   const renderWallpaper = useCallback(() => {
     return (
-      <div className="wallpaper">
+      <div className="fixed inset-0 overflow-hidden">
         {imageUrl && (
           <Image
             src={imageUrl}
@@ -29,6 +29,7 @@ export default function Wallpaper() {
             layout="fill" // Fills the container
             objectFit="cover" // Scales to cover the container
             priority // Prioritizes loading the image
+            className="w-full h-full"
           />
         )}
       </div>
