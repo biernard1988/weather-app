@@ -56,4 +56,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 Authors
 
-Bernard Almeida da Costa: 
+Bernard Almeida da Costa: https://github.com/biernard1988
