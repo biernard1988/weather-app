@@ -34,14 +34,14 @@ export default function Home() {
   } else {
     return (
       <>
-        <div className="absolute inset-0 bg-black/50 z-[1]">
+        <div className="fixed inset-0 bg-black/50 z-[1]">
           {/* BACKGROUND OVERLAY */}
         </div>
         <Wallpaper />
         <div className="relative flex justify-center items-center max-w-sm md:max-w-lg container mx-auto z-10 mt-5">
           <form
             onSubmit={fetchWeather} // Use fetchWeather directly as onSubmit handler
-            className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-400 text-white rounded-2xl"
+            className="flex justify-between items-center w-full mx-5 md:mx-0 p-3 bg-transparent border border-gray-400 text-white rounded-2xl"
           >
             <div>
               <input
